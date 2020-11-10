@@ -43,7 +43,7 @@ pub(crate) struct Handle {
     inner: Weak<Inner>,
 }
 
-pub(crate) struct ReadyEvent {
+pub struct ReadyEvent {
     tick: u8,
     ready: Ready,
 }
