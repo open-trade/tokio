@@ -69,7 +69,7 @@ cfg_io_driver! {
     /// [`clear_write_ready`]: method@Self::clear_write_ready
     /// [`poll_read_ready`]: method@Self::poll_read_ready
     /// [`poll_write_ready`]: method@Self::poll_write_ready
-    pub(crate) struct PollEvented<E: Source> {
+    pub struct PollEvented<E: Source> {
         io: Option<E>,
         registration: Registration,
     }
