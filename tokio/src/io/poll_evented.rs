@@ -88,7 +88,7 @@ impl<E: Source> PollEvented<E> {
     /// from a future driven by a tokio runtime, otherwise runtime can be set
     /// explicitly with [`Runtime::enter`](crate::runtime::Runtime::enter) function.
     #[cfg_attr(feature = "signal", allow(unused))]
-    pub(crate) fn new(io: E) -> io::Result<Self> {
+    pub fn new(io: E) -> io::Result<Self> {
         PollEvented::new_with_interest(io, mio::Interest::READABLE | mio::Interest::WRITABLE)
     }
 
@@ -125,7 +125,7 @@ impl<E: Source> PollEvented<E> {
     /// Returns a shared reference to the underlying I/O object this readiness
     /// stream is wrapping.
     #[cfg(any(feature = "net", feature = "process", feature = "signal"))]
-    pub(crate) fn get_ref(&self) -> &E {
+    pub fn get_ref(&self) -> &E {
         self.io.as_ref().unwrap()
     }
 
@@ -135,7 +135,7 @@ impl<E: Source> PollEvented<E> {
         self.io.as_mut().unwrap()
     }
 
-    pub(crate) fn clear_readiness(&self, event: ReadyEvent) {
+    pub fn clear_readiness(&self, event: ReadyEvent) {
         self.registration.clear_readiness(event);
     }
 
