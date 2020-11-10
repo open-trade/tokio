@@ -165,7 +165,7 @@ impl<E: Source> PollEvented<E> {
     ///
     /// This method may not be called concurrently. It takes `&self` to allow
     /// calling it concurrently with `poll_write_ready`.
-    pub(crate) fn poll_read_ready(&self, cx: &mut Context<'_>) -> Poll<io::Result<ReadyEvent>> {
+    pub fn poll_read_ready(&self, cx: &mut Context<'_>) -> Poll<io::Result<ReadyEvent>> {
         self.registration.poll_readiness(cx, Direction::Read)
     }
 
@@ -193,7 +193,7 @@ impl<E: Source> PollEvented<E> {
     ///
     /// This method may not be called concurrently. It takes `&self` to allow
     /// calling it concurrently with `poll_read_ready`.
-    pub(crate) fn poll_write_ready(&self, cx: &mut Context<'_>) -> Poll<io::Result<ReadyEvent>> {
+    pub fn poll_write_ready(&self, cx: &mut Context<'_>) -> Poll<io::Result<ReadyEvent>> {
         self.registration.poll_readiness(cx, Direction::Write)
     }
 }
