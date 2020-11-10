@@ -212,7 +212,7 @@ cfg_io_driver! {
     mod poll_evented;
 
     #[cfg(not(loom))]
-    pub(crate) use poll_evented::PollEvented;
+    pub use poll_evented::PollEvented;
 }
 
 cfg_net_unix! {
